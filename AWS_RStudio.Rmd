@@ -106,3 +106,19 @@ This is somewhat easier.
         ssh -i {EC2 private key} -NfL 8888:localhost:8888 ubuntu@{EC2 instance's public ip}
 
     Finally, visit <https://localhost:8888> and log in.
+  
+ ## 3. Mount your S3 bucket 
+ 
+I have data in a S3 bucket that I wanted to use in my RStudio session. There is plenty of advice available about how to connect your S3 bucket to your EC2 instance and I followed the official documentation. But, I still needed the following additional steps after creating an IAM profile and modifying the bucket policy:
+ 
+ 1. Install awscli: SSH to your EC2 session and type 'sudo apt install --no-install-recommendas awscli'.
+ 
+ 2. Check if you can see your bucket: 'aws s3 ls'
+ 
+ 3. Install s3fs which will allow you to mount your s3 bucket to the linux ec2 instance: 'sudo apt install -no-install-recommends s3fs'
+ 
+ 4. Create a local directory: 'mkdir s3_bucket_dir'
+ 
+ 5. Mount: 's3fs -o iam_role=auto <name of the bucket> ~/s3_bucket_dir
+ 
+ 6. To unmount: umount s3_bucket_dir
