@@ -107,7 +107,7 @@ This is somewhat easier.
 
     Finally, visit <https://localhost:8888> and log in.
   
- ## Mount S3 bucket 
+## Mount S3 bucket 
  
 I have data in a S3 bucket that I wanted to use in my RStudio session. There is plenty of advice available about how to connect your S3 bucket to your EC2 instance and I followed the official documentation. But, I still needed the following additional steps after creating an IAM profile and modifying the bucket policy:
  
